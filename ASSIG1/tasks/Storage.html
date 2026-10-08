@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="form">
+        <input type="text" id="name" >
+        <input type="text" id="password">
+        <button type="submit">click </button>
+
+    </form>
+   
+ <script>
+     let form=document.getElementById("form")
+     
+     form.addEventListener("submit",(e)=>{
+         e.preventDefault();
+         let name=document.getElementById("name").value;
+         let password=document.getElementById("password").value;
+        console.log(name,password);
+        localStorage.setItem(name,password)
+        // console.log(name,password);
+    })
+    
+    // localStorage.setItem("chid","44654")
+    // localStorage.setItem("chidgug","5656")
+   
+    // console.log( localStorage.getItem("chid"));
+    // localStorage.clear()
+    //sessionStorage.setItem("chidu","2424")
+
+
+ </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+    <!--  //HTMl Atriburte
+    <button onclick="greet()">click</button>
+    <script>
+       function greet(){
+        console.log("hiiiii");
+        
+       } -->
+
+
+
+        <!-- //DOM Attribute
+         <button id="h">click</button>
+         <script>
+            let a=document.getElementById("h")
+            a.onclick=function(){
+            console.log("hloooo");
+            }
+             -->
+
+             <!-- //AddEventListner -->
+            <!-- <button id="btn">click </button>
+            <script>
+                let a=document.getElementById("btn")
+                a.addEventListener("dblclick",function(){
+                    console.log("hilllooo");
+                    
+                })
+            </script> --> 
+
+
+
+     <!-- <button id="on">click</button>
+     <script>
+        let a=document.getElementById("on")
+        a.onmouseover=function(){
+            console.log("hoooo");
+            
+        }
+     </script> -->
+     <!-- <button onmouseover="btn()">click</button>
+     <script>
+        function btn(){
+            console.log("hiihih");
+            
+        } </script>-->
+         <!-- <button id="btn">click</button>
+         <script>
+            let n=document.getElementById("btn")
+            n.addEventListener("mouseover",function(){
+                console.log("hiiiiiiiii");
+                
+            })
+         </script> -->
+         <h1 id="d">Hi Click</h1>
+         <script>
+            let a= document.getElementById("d")
+            a.onmouseover=function(){
+                a.style.color="yellow"
+                a.style.backgroundColor="red"
+                
+            }
+            a.onmouseout=function(){
+                a.style.color="back"
+                a.style.backgroundColor="white"
+            }
+         </script>
+</body>
+</html>

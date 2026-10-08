@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .con {
+            border: 2px solid black;
+            height: 100px;
+            width: 100px;
+            background-color: rgb(182, 147, 147);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            position: absolute;
+            top: 0%;
+            left: 50%;
+            
+
+
+            
+
+        }
+
+        .two {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="come">Click me</button>
+
+    <div class="con two">
+        <h5>Hello</h5>
+        <button id="go">ok</button>
+    </div>
+
+    <script>
+        let come = document.getElementById("come");
+        let go = document.getElementById("go");
+
+        let con = document.querySelector(".con");
+
+        come.addEventListener("click", () => {
+            let con=document.querySelector(".con")
+            con.classList.remove("two");
+        });
+
+        go.addEventListener("click", () => {
+            let con=document.querySelector(".con")
+            con.classList.add("two");
+        });
+    </script>
+
+</body>
+
+</html>

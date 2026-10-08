@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    
+    <style>
+        #bulb {
+            font-size: 300px;
+            transform: rotate(180deg);
+            color: gray;
+        }
+
+        body {
+            background-color: black;
+
+        }
+    </style>
+</head>
+
+<body>
+    
+    <center><button id="o1" onclick="on()">on</button>
+        <button id="o2" onclick="off()">off</button>
+        <h1><i id="bulb" class="fa-solid fa-lightbulb"></i></h1>
+    </center>
+    <script>
+        let bulb = document.getElementById("bulb")
+        let o1 = document.getElementById("o1")
+        o1.style.color = "green"
+        let o2 = document.getElementById("o2")
+        o2.style.color = "red"
+        o2.style.backgroundColor = "red"
+        let on = () => {
+            bulb.style.color = "yellow"
+            document.body.style.backgroundColor = "rgb(238, 241, 160)"
+            o1.style.backgroundColor = "yellow"
+            o2.style.backgroundColor = "white"
+        }
+        let off = () => {
+            bulb.style.color = "grey"
+            document.body.style.backgroundColor = "black"
+            o2.style.backgroundColor = "red"
+            o1.style.backgroundColor = "white"
+        }
+    </script>
+</body>
+
+</html>

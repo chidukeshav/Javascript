@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="para">Hello Welcome to Dom 1</p>
+    <p class="para">Hello Welcome to Dom 2</p> 
+    <p class="para">Hello Welcome to Dom 3</p>
+    <p class="para">Hello Welcome to Dom 4</p>
+    <p class="para">Hello Welcome to Dom 5</p>
+    <p class="para">Hello Welcome to Dom 6</p>
+    <p class="para">Hello Welcome to Dom 7</p>
+    <p class="para">Hello Welcome to Dom 8</p>
+    <p class="para">Hello Welcome to Dom 9</p>
+    <p class="para">Hello Welcome to Dom 10</p>
+    <button onclick="changeColors()">click me</button>
+    <script>
+        function changeColors(){
+            let para=document.getElementsByClassName("para")
+            console.log(para);
+            console.log(Array.isArray(para));
+            for(let i=0;i<para.length;i++){
+                if(i%2==0){
+                    para[i].style.backgroundColor="yellow"
+                    para[i].style.color="black"
+                }
+                else{
+                    para[i].style.backgroundColor="red"
+                    para[i].style.color="white"
+                }
+             
+            }
+        }
+       
+    </script>
+
+
+</body>
+</html>

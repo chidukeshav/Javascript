@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+               border-radius: 5px;
+        }
+        .pop{
+            border: 2px solid black;
+            height: 150px;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            position: absolute;
+            top: 0%;
+            left:50%;
+            transform: translate(-50%,-50%) scale(0);
+            transition: all 1s linear;
+            background-color:blueviolet;
+            border-radius: 20px;
+        } 
+            .pop.show{
+                top: 50%;
+                 transform: translate(-50%,-50%) scale(1);
+            }
+        
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #removebtn{
+
+            color:black;
+            background-color:white;
+        }
+    </style>
+</head>
+<body>
+     <button id="btn">click</button>
+    <div class="pop">
+        <h1>Good morning</h1>
+   <!-- <h3>hiiii</h3> -->
+
+     <button id="removebtn">ok</button>
+   
+    </div>
+    <script>
+         let removebtn=document.querySelector("#removebtn")
+        let btn=document.getElementById("btn")
+     btn.addEventListener("click",() =>{
+        let pop =document.querySelector(".pop")
+        pop.classList.add("show")
+     })
+     removebtn.addEventListener("click",()=>{
+        let pop=document.querySelector(".pop")
+        pop.classList.remove("show")
+     })
+    </script>
+</body>
+</html>

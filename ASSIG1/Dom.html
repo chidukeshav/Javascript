@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1 id="h1tag">Welcome to Dom 1</h1>
+    <h1 id="h2">Welcome to Dom 4</h1>
+    <h1 id="h3">Welcome to Dom 5</h1>
+     <h1 id="h4">Welcome to Dom 4</h1>
+    <h1 id="h5">Welcome to Dom 5</h1>
+
+    <h1 class="cls">Welcome to Dom 2</h1>
+    <h1 class="cls">Welcome to Dom 3</h1>
+    <h1 class="cls">Welcome to Dom 6</h1> 
+
+    <button onclick="alert('Hello Welcome to Dom')">click </button> 
+     <button onclick="changeText()">click me</button>
+    <button onclick="prevText()">prev text </button> 
+    <script>
+        //document.getElementById
+        function changeText(){
+            let h1=document.getElementById("h1tag")
+            let h2=document.getElementById("h2")
+            let h3=document.getElementById("h3")
+            let h4=document.getElementById("h4")
+            let h5=document.getElementById("h5")
+            console.log(h1);
+            h1.innerText="Hello javascript"
+            h1.style.backgroundColor="black"
+            h1.style.color="hotpink"
+            h2.style.backgroundColor="yellow"
+            h2.style.color="hotpink"
+            h3.style.backgroundColor="red"
+            h3.style.color="hotpink"
+            h4.style.backgroundColor="blue"
+            h4.style.color="hotpink"
+            h5.style.backgroundColor="black"
+            h5.style.color="hotpink"
+            
+       }
+     
+         function prevText(){
+            let h1=document.getElementById("h1tag")
+            console.log(h1);
+            h1.innerText="Welcome to Dom 1"
+            h1.style.backgroundColor="white"
+            h1.style.color="black"
+            
+        }
+        //Document.getElementByClassName
+        let h1tags =document.getElementsByClassName("cls")
+        console.log(h1tags);
+        console.log(Array.isArray(h1tags));
+
+        for(let i=0;i<h1tags.length;i++){
+            h1tags[i].style.backgroundColor="black"
+            h1tags[i].style.color="red"
+        }
+         -->
+        
+
+        <!-- html collection -->
+        <h1 class="cls"> hello new h1 tag</h1>
+        <h1 class="cls"> hello new h2 tag</h1>
+        <h1 class="cls"> hello new h3 tag</h1>
+        <script>
+        //  let h1=document.getElementsByClassName("cls")
+        //  console.log(h1);
+        //  console.log(h1.length);
+
+        //  let newh1=document.createElement("h1")
+        //  newh1.innerText="Hello in new h1 tag created by javascript"
+        //  newh1.className="cls"
+        //  document.body.append(newh1)
+        //  console.log(h1.length);
+
+         //node list
+        let h2=document.querySelectorAll(".cls")
+        console.log(h2);
+         console.log(h2.length);
+
+         let newh2=document.createElement("h1")
+         newh2.innerText="Hello in new h1 tag created by javascript"
+         newh2.className="cls"
+         document.body.append(newh2)
+         console.log(h2.length);
+        </script>
+</body>
+</html>

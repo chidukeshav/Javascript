@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let div = document.createElement("div")
+        console.log(div);
+        document.body.append(div)
+        let section = document.createElement("section")
+        let h1 = document.createElement("h1")
+        
+        let h2 = document.createElement("h2")
+        let h3 = document.createElement("h3")
+        let p = document.createElement("p")
+        let article1 = document.createElement("article")
+        let article2 = document.createElement("article")
+        let aside = document.createElement("aside")
+        let aside1 = document.createElement("aside")
+        
+
+
+        div.append(section);
+        section.append(aside);
+        section.append(aside1);
+        aside.append(h1);
+        aside1.append(h2,p);
+        
+        
+    </script>
+</body>
+</html>
