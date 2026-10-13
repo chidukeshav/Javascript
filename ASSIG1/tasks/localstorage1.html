@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myform">
+ <center>
+        <input type="text"  id="username"  placeholder="enter username"><br><br><br>
+        <p id="usernameerror"> </p>
+
+        <input type="text"  id="password"  placeholder="enter password"><br><br><br>
+        <p id="passworderror"></p>
+        <input type="text" id="conformpwd" placeholder="conform password"><br><br><br>
+        <p id="conformpwderror"></p>
+        <input type="text" id="email" placeholder="enter email"><br><br><br>
+        <p id="emailerror"></p>
+
+        <button type="submit">Submit</button>
+</center>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        
+        let usernameerror=document.getElementById("usernameerror")
+        usernameerror.style.color="red";
+        let passworderror=document.getElementById("passworderror")
+        passworderror.style.color="red;"
+
+
+        document.getElementById("myform").addEventListener("submit", (e) => {
+
+            e.preventDefault();
+
+            
+            let username = document.getElementById("username").value;
+            
+            let password = document.getElementById("password").value;
+            let conformpwd=document.getElementById("conformpwd").value;
+            let email=document.getElementById("email").value;
+
+
+
+            if(username.length==0){
+                usernameerror.innerText="enter valid username"
+                return
+            }
+            if(passworderror.length==0){
+                passworderror.innerText="valid password"
+            }
+            let arr = JSON.parse(localStorage.getItem("userdata")) || [];
+            let existUser=arr.some((ele)=>{
+                return  ele.username===username
+            })
+            // let usertab=arr.some(user => user.username == username)
+            // if(usertab){
+            //     alert("user exists")
+            // }
+            // else{
+            if(existUser){
+                alert("this username already exist")
+                return
+            }
+            let obj = {
+                username: username,
+                password: password,
+                conformpwd:conformpwd,
+                email:email
+            };
+            arr.push(obj)
+
+            localStorage.setItem("userdata", JSON.stringify(arr));
+            alert("success")
+        }
+
+
+
+
+        );
+
+    </script>
+</body>
+</html>
