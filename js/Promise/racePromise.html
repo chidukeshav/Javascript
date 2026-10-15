@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // //racePromise
+        // let firstPromise= new Promise((resovle)=>{
+        //     setTimeout(()=>{
+        //         resovle("Reseve by 1st")
+        //     },4000);
+            
+        // })
+        //  let secondPromise= new Promise((resolve)=>{
+        //     setTimeout(()=>{
+        //         resolve("Reseve by 2st")
+        //     },1000);
+            
+        // })
+        //  let thirdPromise= new Promise((res,reject)=>{
+        //     setTimeout(()=>{
+        //         res("Reseve by 3st")
+        //     },1000);
+            
+        // })
+        // Promise.race([firstPromise,secondPromise,thirdPromise]).then((res)=>{
+        //     console.log(res);
+            
+        // }).catch((err)=>{
+        //     console.log(err);
+            
+        // })
+         //racePromise
+        let firstPromise= new Promise((resovle)=>{
+            setTimeout(()=>{
+                resovle("Reseve by 1st")
+            },4000);
+            
+        })
+         let secondPromise= new Promise((resolve)=>{
+            setTimeout(()=>{
+                resolve("Reseve by 2st")
+            },1000);
+            
+        })
+         let thirdPromise= new Promise((res,reject)=>{
+            setTimeout(()=>{
+                res("Reseve by 3st")
+            },1000);
+            
+        })
+        Promise.any([firstPromise,secondPromise,thirdPromise]).then((res)=>{
+            console.log(res);
+            
+        }).catch((err)=>{
+            console.log(err);
+            
+        })
+    </script>
+    
+</body>
+</html>
