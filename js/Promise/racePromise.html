@@ -34,7 +34,33 @@
             
         // })
          //racePromise
-        let firstPromise= new Promise((resovle)=>{
+        // let firstPromise= new Promise((resovle)=>{
+        //     setTimeout(()=>{
+        //         resovle("Reseve by 1st")
+        //     },4000);
+            
+        // })
+        //  let secondPromise= new Promise((resolve)=>{
+        //     setTimeout(()=>{
+        //         resolve("Reseve by 2st")
+        //     },1000);
+            
+        // })
+        //  let thirdPromise= new Promise((res,reject)=>{
+        //     setTimeout(()=>{
+        //         res("Reseve by 3st")
+        //     },1000);
+            
+        // })
+        // Promise.any([firstPromise,secondPromise,thirdPromise]).then((res)=>{
+        //     console.log(res);
+            
+        // }).catch((err)=>{
+        //     console.log(err);
+            
+        // })
+        //Promise all
+             let firstPromise= new Promise((resovle)=>{
             setTimeout(()=>{
                 resovle("Reseve by 1st")
             },4000);
@@ -48,11 +74,11 @@
         })
          let thirdPromise= new Promise((res,reject)=>{
             setTimeout(()=>{
-                res("Reseve by 3st")
+                reject("Reseve by 3st")
             },1000);
             
         })
-        Promise.any([firstPromise,secondPromise,thirdPromise]).then((res)=>{
+        Promise.all([firstPromise,secondPromise,thirdPromise]).then((res)=>{
             console.log(res);
             
         }).catch((err)=>{
