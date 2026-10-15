@@ -60,6 +60,32 @@
             
         // })
         //Promise all
+        //      let firstPromise= new Promise((resovle)=>{
+        //     setTimeout(()=>{
+        //         resovle("Reseve by 1st")
+        //     },4000);
+            
+        // })
+        //  let secondPromise= new Promise((resolve)=>{
+        //     setTimeout(()=>{
+        //         resolve("Reseve by 2st")
+        //     },1000);
+            
+        // })
+        //  let thirdPromise= new Promise((res,reject)=>{
+        //     setTimeout(()=>{
+        //         reject("Reseve by 3st")
+        //     },1000);
+            
+        // })
+        // Promise.all([firstPromise,secondPromise,thirdPromise]).then((res)=>{
+        //     console.log(res);
+            
+        // }).catch((err)=>{
+        //     console.log(err);
+            
+        // })
+        //Promise allSettled
              let firstPromise= new Promise((resovle)=>{
             setTimeout(()=>{
                 resovle("Reseve by 1st")
@@ -74,11 +100,11 @@
         })
          let thirdPromise= new Promise((res,reject)=>{
             setTimeout(()=>{
-                reject("Reseve by 3st")
+                res("Reseve by 3st")
             },1000);
             
         })
-        Promise.all([firstPromise,secondPromise,thirdPromise]).then((res)=>{
+        Promise.allSettled([firstPromise,secondPromise,thirdPromise]).then((res)=>{
             console.log(res);
             
         }).catch((err)=>{
