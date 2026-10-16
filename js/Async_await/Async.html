@@ -7,16 +7,65 @@
 </head>
 <body>
     <script>
-        async function fetchData(){
-            try{
-                let res=await fetch("https://fakestoreapi.com/products")
-                let data=await res.json();
-                console.log(data);
-            }catch(error){
-                console.log(error);
-            }  
+        // async function fetchData(){
+        //     try{
+        //         let res=await fetch("https://fakestoreapi.com/products")
+        //         let data=await res.json();
+        //         console.log(data);
+        //     }catch(error){
+        //         console.log(error);
+        //     }  
+        // }
+        // fetchData()
+
+
+        function userData(){
+            return new Promise((resolve)=>{
+                setTimeout(()=>{
+                    resolve("limmited product")
+                },3000);
+            }
+
+
+            )
         }
-        fetchData()
+         function productData(){
+            return new Promise((resolve)=>{
+                setTimeout(()=>{
+                    resolve("product")
+                },2000);
+            }
+
+
+            )
+        }
+          function cartData (){
+            return new Promise((resolve)=>{
+                setTimeout(()=>{
+                    resolve("order palced")
+                },2000);
+            }
+
+
+            )
+        }
+        async function name() {
+            console.log("start");
+            
+            let userD=await userData()
+            console.log(userD);
+           
+             let proD=await productData()
+            console.log(proD);
+           
+             let cartD=await cartData()
+            console.log(cartD);
+            
+            console.log("end");
+           
+        }
+
+        name()
     </script>
 </body>
 </html>
