@@ -1,70 +1,89 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NovaMart | Shop Products</title>
+  <title>ShopZone | Products</title>
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy: #102a2a;
-      --navy-2: #174444;
-      --yellow: #b8f36b;
-      --page: #f4f7f4;
-      --text: #172323;
-      --muted: #65716f;
-      --border: #dce5df;
-      --accent: #1e746b;
-      --card-shadow: 0 8px 24px rgba(16, 42, 42, 0.06);
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
+
+    :root {
+      --navy: #0b2d5c;
+      --navy-2: #164a8a;
+      --blue: #3b82f6;
+      --page: #eff6ff;
+      --text: #172554;
+      --muted: #52637a;
+      --border: #cbdcf5;
+    }
+
     body {
-      font-family: Inter, "Segoe UI", Arial, Helvetica, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--page);
       color: var(--text);
-      line-height: 1.45;
     }
+
+    /* HEADER */
+
     .topbar {
-      min-height: 76px;
+      min-height: 70px;
       display: flex;
       align-items: center;
-      gap: 22px;
-      padding: 14px clamp(16px, 3vw, 42px);
+      gap: 20px;
+      padding: 12px 22px;
       background: var(--navy);
       color: white;
-      box-shadow: 0 4px 18px rgba(16, 42, 42, 0.12);
     }
+
     .hamburger {
       width: 38px;
       height: 38px;
-      border: 1px solid #738092;
+      border: 1px solid #93b4df;
       border-radius: 5px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 25px;
       flex-shrink: 0;
+      cursor: pointer;
     }
-    .logo { font-size: 27px; letter-spacing: -1px; font-weight: 850; white-space: nowrap; }
-    .logo span { color: var(--yellow); }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: #60a5fa;
+    }
+
     .search {
       display: flex;
       flex: 1;
       min-width: 120px;
-      height: 46px;
-      border-radius: 10px;
+      height: 42px;
+      border-radius: 5px;
       overflow: hidden;
       background: white;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
     }
+
     .search-label {
       display: flex;
       align-items: center;
       padding: 0 12px;
-      background: #e7e9ec;
-      color: #30343b;
-      border-right: 1px solid #c9cdd1;
+      background: #dbeafe;
+      color: #172554;
+      border-right: 1px solid #cbdcf5;
       font-size: 13px;
     }
+
     .search input {
       min-width: 0;
       width: 100%;
@@ -73,126 +92,181 @@
       padding: 0 13px;
       font-size: 15px;
     }
+
     .search-icon {
       display: grid;
       place-items: center;
       width: 52px;
       flex-shrink: 0;
-      background: var(--yellow);
-      color: #102a2a;
+      background: var(--blue);
+      color: white;
       font-size: 23px;
     }
-    .header-link { font-size: 13px; line-height: 1.35; white-space: nowrap; }
+
+    .header-link {
+      font-size: 13px;
+      line-height: 1.35;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    /* NAVIGATION */
+
     .nav {
       display: flex;
       align-items: center;
-      gap: clamp(16px, 2.2vw, 30px);
-      min-height: 46px;
-      padding: 0 clamp(16px, 3vw, 42px);
+      gap: 23px;
+      min-height: 40px;
+      padding: 0 24px;
       background: var(--navy-2);
       color: white;
-      overflow: hidden;
+      overflow-x: auto;
       white-space: nowrap;
       font-size: 14px;
     }
-    .nav strong { font-size: 15px; }
+
+    .nav strong {
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .nav span {
+      cursor: pointer;
+    }
+
+    .nav span:hover {
+      color: #bfdbfe;
+    }
+
+    /* PAGE */
+
     .page-layout {
       display: flex;
       align-items: flex-start;
       gap: 18px;
       max-width: 1600px;
-      margin: 28px auto;
-      padding: 0 clamp(12px, 2.5vw, 34px);
+      margin: 18px auto;
+      padding: 0 18px;
     }
-    .main-content { flex: 1; min-width: 0; }
+
+    .main-content {
+      flex: 1;
+      min-width: 0;
+    }
+
     .section {
-      background: #ffffff;
-      padding: clamp(16px, 2.2vw, 28px);
-      margin-bottom: 22px;
-      border: 1px solid #e7eee9;
-      border-radius: 18px;
-      box-shadow: var(--card-shadow);
+      background: white;
+      padding: 20px;
+      margin-bottom: 18px;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(30, 64, 175, 0.06);
     }
+
     .section-heading {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 10px;
-      margin-bottom: 24px;
+      margin-bottom: 18px;
     }
-    .section-heading h1 { font-size: clamp(20px, 2vw, 26px); font-weight: 750; letter-spacing: -.5px; }
-    .section-heading span { color: var(--muted); font-size: 13px; }
+
+    .section-heading h1 {
+      font-size: 21px;
+      font-weight: 500;
+    }
+
+    .section-heading span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* PRODUCTS */
+
     .product-grid {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 18px;
+      gap: 16px;
     }
+
     .product-card {
       min-width: 0;
-      padding: 13px;
-      border: 1px solid #edf1ed;
-      border-radius: 15px;
+      padding: 10px;
+      border: 1px solid transparent;
+      border-radius: 6px;
       display: flex;
       flex-direction: column;
-      align-items: stretch;
-      background: #fff;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      background: white;
     }
+
     .product-card:hover {
-      border-color: #b8d9c9;
-      transform: translateY(-4px);
-      box-shadow: 0 12px 26px rgba(16, 42, 42, .10);
+      border-color: #93c5fd;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
     }
+
     .product-image {
-      height: 178px;
+      height: 165px;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 15px;
-      background: #f5f8f5;
-      border-radius: 11px;
+      margin-bottom: 12px;
+      background: white;
       overflow: hidden;
     }
+
     .product-image img {
       display: block;
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
     }
+
     .product-name {
       min-height: 42px;
       font-size: 14px;
-      line-height: 1.5;
-      font-weight: 600;
-      color: #244c48;
+      line-height: 1.4;
+      color: #1d4ed8;
       margin-bottom: 10px;
     }
-    .price { font-size: 23px; font-weight: 750; letter-spacing: -.4px; margin-bottom: 14px; color: #142b29; }
-    .price sup { font-size: 12px; vertical-align: top; }
+
+    .price {
+      font-size: 21px;
+      margin-bottom: 5px;
+      color: #172554;
+    }
+
+    .price sup {
+      font-size: 12px;
+      vertical-align: top;
+    }
+
+    .mrp {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 13px;
+    }
+
+    .mrp del {
+      margin-left: 4px;
+    }
+
     .add-button {
       margin-top: auto;
       align-self: flex-start;
       border: 0;
-      border-radius: 999px;
-      padding: 11px 18px;
-      background: var(--yellow);
-      color: #183027;
+      border-radius: 22px;
+      padding: 9px 17px;
+      background: var(--blue);
+      color: white;
       font-size: 13px;
-      font-weight: 750;
       cursor: pointer;
-      transition: filter .2s ease, transform .2s ease;
     }
-    .add-button:hover { filter: brightness(.96); transform: translateY(-1px); }
-    .nav span { cursor: pointer; opacity: .9; transition: opacity .2s ease; }
-    .nav span:hover { opacity: 1; color: var(--yellow); }
-    .hamburger { border-radius: 10px; }
-    .search-icon { cursor: pointer; }
-    .cart-container {
-      box-shadow: var(--card-shadow);
-      border-radius: 14px;
+
+    .add-button:hover {
+      background: #1d4ed8;
     }
-    /* Empty cart is hidden initially. Add .cart-item elements inside it
-       and change display:none to display:block when you want to show it. */
+
+    /* CART */
+
     .cart-container {
       display: none;
       width: 250px;
@@ -202,248 +276,646 @@
       background: white;
       border: 1px solid var(--border);
       padding: 16px;
-      border-radius: 3px;
+      border-radius: 5px;
     }
-    .cart-container h2 { font-size: 18px; margin-bottom: 14px; }
+
+    .cart-container h2 {
+      font-size: 18px;
+      margin-bottom: 14px;
+      color: var(--navy);
+    }
+
     .cart-item {
       display: flex;
       gap: 10px;
       align-items: center;
       padding: 12px 0;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #dbeafe;
     }
-    .cart-item img { width: 58px; height: 58px; object-fit: contain; }
-    .cart-item-details { font-size: 13px; line-height: 1.45; }
-    .cart-item-details strong { display: block; margin-top: 4px; }
-    .cart-total { font-weight: bold; margin-top: 16px; }
-    .best-sellers { margin-top: 18px; }
+
+    .cart-item img {
+      width: 58px;
+      height: 58px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .cart-item-details {
+      font-size: 13px;
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
+
+    .cart-item-details strong {
+      display: block;
+      margin-top: 4px;
+      color: #1d4ed8;
+    }
+
+    .cart-total {
+      font-weight: bold;
+      color: #1d4ed8;
+      margin-top: 16px;
+    }
+
+    .best-sellers {
+      margin-top: 18px;
+    }
+
+    /* SIDEBAR */
+
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 18, 42, 0.7);
+      z-index: 2000;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -360px;
+      width: 350px;
+      max-width: 85vw;
+      height: 100vh;
+      background: white;
+      color: #172554;
+      z-index: 2001;
+      overflow-y: auto;
+      transition: left 0.3s ease;
+      box-shadow: 2px 0 8px rgba(0, 0, 0, 0.25);
+    }
+
+    .sidebar.active {
+      left: 0;
+    }
+
+    .sidebar-overlay.active {
+      display: block;
+    }
+
+    .sidebar-header {
+      min-height: 55px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 20px;
+      background: var(--navy);
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .sidebar-header .user-icon {
+      font-size: 24px;
+    }
+
+    .sidebar-close {
+      position: fixed;
+      top: 10px;
+      left: min(360px, 86vw);
+      z-index: 2002;
+      display: none;
+      width: 34px;
+      height: 34px;
+      border: 1px solid white;
+      border-radius: 4px;
+      background: var(--navy);
+      color: white;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .sidebar-close.active {
+      display: block;
+    }
+
+    .sidebar-section {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-section h3 {
+      margin-bottom: 12px;
+      font-size: 18px;
+      color: var(--navy);
+    }
+
+    .sidebar-section p {
+      padding: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .sidebar-section p:hover {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    /* RESPONSIVE */
+
     @media (max-width: 1200px) {
-      .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .header-link.optional { display: none; }
+      .product-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .header-link.optional {
+        display: none;
+      }
     }
+
     @media (max-width: 900px) {
-      .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .page-layout { padding: 0 10px; }
-      .topbar { gap: 12px; padding: 10px 12px; }
-      .nav { gap: 15px; }
-      .cart-container { width: 220px; flex-basis: 220px; }
+      .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .page-layout {
+        padding: 0 10px;
+      }
+
+      .topbar {
+        gap: 12px;
+        padding: 10px 12px;
+      }
+
+      .nav {
+        gap: 15px;
+      }
+
+      .cart-container {
+        width: 220px;
+        flex-basis: 220px;
+      }
     }
+
     @media (max-width: 650px) {
-      .topbar { flex-wrap: wrap; }
-      .search { order: 3; flex-basis: 100%; }
-      .header-link { display: none; }
-      .nav { overflow-x: auto; padding: 0 12px; }
-      .page-layout { display: block; margin-top: 10px; }
-      .cart-container { position: static; width: 100%; margin-top: 16px; }
-      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-      .section { padding: 13px; border-radius: 14px; }
-      .product-card { padding: 9px; border-radius: 12px; }
-      .product-image { height: 135px; }
-      .section-heading h1 { font-size: 18px; }
-      .price { font-size: 20px; }
-      .add-button { width: 100%; padding: 10px 8px; }
+      .topbar {
+        flex-wrap: wrap;
+      }
+
+      .search {
+        order: 3;
+        flex-basis: 100%;
+      }
+
+      .header-link {
+        display: none;
+      }
+
+      .nav {
+        padding: 0 12px;
+      }
+
+      .page-layout {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .cart-container {
+        position: static;
+        width: 100%;
+        margin-top: 16px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .section {
+        padding: 12px;
+      }
+
+      .product-image {
+        height: 135px;
+      }
+
+      .section-heading h1 {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <header id="topbar" class="topbar">
-    <div id="menu-button" class="hamburger" aria-label="Menu">&#9776;</div>
-    <div id="logo" class="logo">nova<span>mart</span></div>
-    <div id="product-search" class="search">
+
+  <!-- HEADER -->
+
+  <header class="topbar">
+    <div class="hamburger" aria-label="Open menu">&#9776;</div>
+
+    <div class="logo">shop<span>zone</span></div>
+
+    <div class="search">
       <div class="search-label">All &#9662;</div>
-      <input id="search-input" type="text" placeholder="Search NovaMart products">
-      <div id="search-button" class="search-icon">&#9906;</div>
+      <input id="inp" type="text" placeholder="Search ShopZone">
+      <div class="search-icon">&#9906;</div>
     </div>
-    <div class="header-link optional">Delivering to Bengaluru<br><strong>Update location</strong></div>
-    <div class="header-link">Hello, sign in<br><strong>Account &amp; Lists</strong></div>
-    <div class="header-link optional">Returns<br><strong>&amp; Orders</strong></div>
-    <div class="header-link"><strong>🛒 Cart</strong></div>
+
+    <div class="header-link optional">
+      Delivering to Bengaluru<br>
+      <strong>Update location</strong>
+    </div>
+
+    <div class="header-link">
+      Hello, sign in<br>
+      <strong>Account &amp; Lists</strong>
+    </div>
+
+    <div class="header-link optional">
+      Returns<br>
+      <strong>&amp; Orders</strong>
+    </div>
+
+    <div class="header-link" id="cart-link">
+      <strong>Cart (<span id="cart-count">0</span>)</strong>
+    </div>
   </header>
 
-  <nav id="main-navigation" class="nav">
-    <strong>&#9776; All</strong>
-    <span>Today's Deals</span><span>Customer Service</span><span>Mobiles</span>
-    <span>Electronics</span><span>Home &amp; Kitchen</span><span>Fashion</span>
-    <span>Computers</span><span>Best Sellers</span>
+  <!-- SIDEBAR -->
+
+  <div class="sidebar-overlay"></div>
+
+  <button class="sidebar-close" aria-label="Close menu">&times;</button>
+
+  <aside class="sidebar" aria-label="Main menu">
+    <div class="sidebar-header">
+      <span class="user-icon">&#9787;</span>
+      <span>Hello, sign in</span>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Trending</h3>
+      <p>Bestsellers</p>
+      <p>New Releases</p>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Digital Content and Devices</h3>
+      <p>Echo &amp; Alexa <span style="float:right">&#8250;</span></p>
+      <p>Fire TV <span style="float:right">&#8250;</span></p>
+      <p>Kindle E-Readers &amp; eBooks <span style="float:right">&#8250;</span></p>
+      <p>Audible Audiobooks <span style="float:right">&#8250;</span></p>
+      <p>ShopZone Prime Video <span style="float:right">&#8250;</span></p>
+      <p>ShopZone Music <span style="float:right">&#8250;</span></p>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Shop by Category</h3>
+      <p>Mobiles, Computers <span style="float:right">&#8250;</span></p>
+      <p>TV, Appliances, Electronics <span style="float:right">&#8250;</span></p>
+      <p>Men's Fashion <span style="float:right">&#8250;</span></p>
+      <p>Women's Fashion <span style="float:right">&#8250;</span></p>
+      <p>Home, Kitchen, Pets <span style="float:right">&#8250;</span></p>
+      <p>Books <span style="float:right">&#8250;</span></p>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Help &amp; Settings</h3>
+      <p>Your Account</p>
+      <p>Customer Service</p>
+      <p>Sign in</p>
+    </div>
+  </aside>
+
+  <!-- NAVIGATION -->
+
+  <nav class="nav">
+    <strong class="nav-all">&#9776; All</strong>
+    <span>Today's Deals</span>
+    <span>Customer Service</span>
+    <span>Mobiles</span>
+    <span>Electronics</span>
+    <span>Home &amp; Kitchen</span>
+    <span>Fashion</span>
+    <span>Computers</span>
+    <span>Best Sellers</span>
   </nav>
 
-  <div id="page-layout" class="page-layout">
-    <main id="main-content" class="main-content">
-      <section id="products-section" class="section">
+  <!-- MAIN PAGE -->
+
+  <div class="page-layout">
+
+    <main class="main-content">
+
+      <section class="section">
         <div class="section-heading">
-          <h1>Explore Our Products</h1>
+          <h1>Bargain recommendations</h1>
           <span>Page 1 of 1</span>
         </div>
-        <div id="product-grid" class="product-grid">
-          <article class="product-card" id="product1">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="Nova X5 Smartphone — 128 GB" onerror="this.style.display='none'"></div>
-            <div class="product-name">Nova X5 Smartphone — 128 GB</div><div class="price"><sup>₹</sup>14,999</div><button id="add-to-cart-1" class="add-button">Add to cart</button>
-          </article>
-          <article class="product-card" id="product2">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=600&q=80" alt="Pulse Wireless Over-Ear Headphones"></div>
-            <div class="product-name">Pulse Wireless Over-Ear Headphones</div><div class="price"><sup>₹</sup>2,899</div><button id="add-to-cart-2" class="add-button">Add to cart</button>
-          </article>
-          <article class="product-card" id="product3">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=600&q=80" alt="Classic Silver-Dial Wristwatch"></div>
-            <div class="product-name">Classic Silver-Dial Wristwatch</div><div class="price"><sup>₹</sup>1,499</div><button id="add-to-cart-3" class="add-button">Add to cart</button>
-          </article>
-          <article class="product-card" id="product4">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=600&q=80" alt="Velocity Lightweight Running Shoes"></div>
-            <div class="product-name">Velocity Lightweight Running Shoes</div><div class="price"><sup>₹</sup>2,599</div><button id="add-to-cart-4" class="add-button">Add to cart</button>
-          </article>
-          <article class="product-card" id="product5">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80" alt="SnapShot Compact Digital Camera"></div>
-            <div class="product-name">SnapShot Compact Digital Camera</div><div class="price"><sup>₹</sup>8,199</div><button id="add-to-cart-5" class="add-button">Add to cart</button>
-          </article>
-          <article class="product-card" id="product6">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=600&q=80" alt="Echo Wireless Headset with Mic"></div>
-            <div class="product-name">Echo Wireless Headset with Mic</div><div class="price"><sup>₹</sup>1,799</div><button id="add-to-cart-6" class="add-button">Add to cart</button>
-          </article>
-          <article class="product-card" id="product7">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80" alt="FitPro Smartwatch"></div>
-            <div class="product-name">FitPro Smartwatch</div><div class="price"><sup>₹</sup>2,999</div><button id="add-to-cart-7" class="add-button">Add to cart</button>
-          </article>
-          <article class="product-card" id="product8">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1598300053653-3c6a5c4a4c5e?auto=format&fit=crop&w=600&q=80" alt="ErgoFlex Office Chair"></div>
-            <div class="product-name">ErgoFlex Office Chair</div><div class="price"><sup>₹</sup>4,799</div><button id="add-to-cart-8" class="add-button">Add to cart</button>
-          </article>
-          <article class="product-card" id="product9">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80" alt="NovaBook Slim Laptop"></div>
-            <div class="product-name">NovaBook Slim Laptop</div><div class="price"><sup>₹</sup>48,999</div><button id="add-to-cart-9" class="add-button">Add to cart</button>
-          </article>
-          <article class="product-card" id="product10">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80" alt="Aura Fresh Eau de Parfum"></div>
-            <div class="product-name">Aura Fresh Eau de Parfum</div><div class="price"><sup>₹</sup>849</div><button id="add-to-cart-10" class="add-button">Add to cart</button></article>
 
-          <article class="product-card" id="product11">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=600&q=80" alt="Shield Shockproof Phone Case"></div>
-            <div class="product-name">Shield Shockproof Phone Case</div><div class="price"><sup>₹</sup>399</div><button id="add-to-cart-11" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product12">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" alt="Everyday Classic Shoulder Bag"></div>
-            <div class="product-name">Everyday Classic Shoulder Bag</div><div class="price"><sup>₹</sup>1,849</div><button id="add-to-cart-12" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product13">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=600&q=80" alt="ActiveGrip Sports Shoes"></div>
-            <div class="product-name">ActiveGrip Sports Shoes</div><div class="price"><sup>₹</sup>1,999</div><button id="add-to-cart-13" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product14">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=600&q=80" alt="Creator Portable Digital Camera"></div>
-            <div class="product-name">Creator Portable Digital Camera</div><div class="price"><sup>₹</sup>7,999</div><button id="add-to-cart-14" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product15">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Foldable Studio Headphones"></div>
-            <div class="product-name">Foldable Studio Headphones</div><div class="price"><sup>₹</sup>1,549</div><button id="add-to-cart-15" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product16">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Minimalist Everyday Watch"></div>
-            <div class="product-name">Minimalist Everyday Watch</div><div class="price"><sup>₹</sup>1,399</div><button id="add-to-cart-16" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product17">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=600&q=80" alt="NovaBook Everyday Notebook"></div>
-            <div class="product-name">NovaBook Everyday Notebook</div><div class="price"><sup>₹</sup>42,999</div><button id="add-to-cart-17" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product18">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80" alt="FitTrack Digital Fitness Watch"></div>
-            <div class="product-name">FitTrack Digital Fitness Watch</div><div class="price"><sup>₹</sup>2,099</div><button id="add-to-cart-18" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product19">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&q=80" alt="GameWave Padded Gaming Headset"></div>
-            <div class="product-name">GameWave Padded Gaming Headset</div><div class="price"><sup>₹</sup>2,399</div><button id="add-to-cart-19" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product20">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=600&q=80" alt="Modern Study Chair"></div>
-            <div class="product-name">Modern Study Chair</div><div class="price"><sup>₹</sup>3,399</div><button id="add-to-cart-20" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product21">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=600&q=80" alt="Aura Signature Fragrance"></div>
-            <div class="product-name">Aura Signature Fragrance</div><div class="price"><sup>₹</sup>779</div><button id="add-to-cart-21" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product22">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1572569028738-411a0977d9c8?auto=format&fit=crop&w=600&q=80" alt="FlexGuard Mobile Cover"></div>
-            <div class="product-name">FlexGuard Mobile Cover</div><div class="price"><sup>₹</sup>329</div><button id="add-to-cart-22" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product23">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" alt="CityStyle Compact Handbag"></div>
-            <div class="product-name">CityStyle Compact Handbag</div><div class="price"><sup>₹</sup>1,299</div><button id="add-to-cart-23" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product24">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80" alt="BreatheRun Training Shoes"></div>
-            <div class="product-name">BreatheRun Training Shoes</div><div class="price"><sup>₹</sup>2,199</div><button id="add-to-cart-24" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product25">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Pulse Bluetooth Headphones"></div>
-            <div class="product-name">Pulse Bluetooth Headphones</div><div class="price"><sup>₹</sup>1,599</div><button id="add-to-cart-25" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product26">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80" alt="Urban Classic Wristwatch"></div>
-            <div class="product-name">Urban Classic Wristwatch</div><div class="price"><sup>₹</sup>1,299</div><button id="add-to-cart-26" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product27">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=600&q=80" alt="NovaBook Student Laptop"></div>
-            <div class="product-name">NovaBook Student Laptop</div><div class="price"><sup>₹</sup>39,999</div><button id="add-to-cart-27" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product28">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=600&q=80" alt="FitTrack Activity Band"></div>
-            <div class="product-name">FitTrack Activity Band</div><div class="price"><sup>₹</sup>1,649</div><button id="add-to-cart-28" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product29">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=600&q=80" alt="ClearVoice Stereo Headset"></div>
-            <div class="product-name">ClearVoice Stereo Headset</div><div class="price"><sup>₹</sup>1,899</div><button id="add-to-cart-29" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product30">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=600&q=80" alt="Modern Home Office Chair"></div>
-            <div class="product-name">Modern Home Office Chair</div><div class="price"><sup>₹</sup>4,199</div><button id="add-to-cart-30" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product31">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="Aura Daily Fragrance"></div>
-            <div class="product-name">Aura Daily Fragrance</div><div class="price"><sup>₹</sup>699</div><button id="add-to-cart-31" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product32">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=600&q=80" alt="Armor Protective Phone Case"></div>
-            <div class="product-name">Armor Protective Phone Case</div><div class="price"><sup>₹</sup>349</div><button id="add-to-cart-32" class="add-button">Add to cart</button></article>
-          <article class="product-card" id="product33">
-            <div class="product-image"><img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=600&q=80" alt="CityLite Shoulder Purse"></div>
-            <div class="product-name">CityLite Shoulder Purse</div><div class="price"><sup>₹</sup>1,149</div><button id="add-to-cart-33" class="add-button">Add to cart</button></article>
+        <div class="product-grid">
+
+          <article class="product-card" id="product-01">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="Smartphone">
+            </div>
+            <div class="product-name">Smartphone with HD display, 128 GB storage</div>
+            <div class="price"><sup>₹</sup>14,999</div>
+            <div class="mrp">M.R.P.: <del>₹21,499</del></div>
+            <button class="add-button">Add to cart</button>
+          </article>
+
+          <article class="product-card" id="product-02">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Headphones">
+            </div>
+            <div class="product-name">Wireless over-ear headphones with deep bass</div>
+            <div class="price"><sup>₹</sup>2,899</div>
+            <div class="mrp">M.R.P.: <del>₹4,999</del></div>
+            <button class="add-button">Add to cart</button>
+          </article>
+
+          <article class="product-card" id="product-03">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80" alt="Watch">
+            </div>
+            <div class="product-name">Classic analog wrist watch for everyday use</div>
+            <div class="price"><sup>₹</sup>1,499</div>
+            <div class="mrp">M.R.P.: <del>₹1,999</del></div>
+            <button class="add-button">Add to cart</button>
+          </article>
+
+          <article class="product-card" id="product-04">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Running shoes">
+            </div>
+            <div class="product-name">Lightweight running shoes for daily training</div>
+            <div class="price"><sup>₹</sup>2,599</div>
+            <div class="mrp">M.R.P.: <del>₹3,999</del></div>
+            <button class="add-button">Add to cart</button>
+          </article>
+
+          <article class="product-card" id="product-05">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=600&q=80" alt="Camera">
+            </div>
+            <div class="product-name">Compact digital camera for travel and memories</div>
+            <div class="price"><sup>₹</sup>8,199</div>
+            <div class="mrp">M.R.P.: <del>₹9,999</del></div>
+            <button class="add-button">Add to cart</button>
+          </article>
+
+          <article class="product-card" id="product-06">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80" alt="Headset">
+            </div>
+            <div class="product-name">Comfort-fit wireless headset with microphone</div>
+            <div class="price"><sup>₹</sup>1,799</div>
+            <div class="mrp">M.R.P.: <del>₹2,499</del></div>
+            <button class="add-button">Add to cart</button>
+          </article>
+
+          <article class="product-card" id="product-07">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&q=80" alt="Smartwatch">
+            </div>
+            <div class="product-name">Smart watch with fitness and activity tracking</div>
+            <div class="price"><sup>₹</sup>2,999</div>
+            <div class="mrp">M.R.P.: <del>₹4,999</del></div>
+            <button class="add-button">Add to cart</button>
+          </article>
+
+          <article class="product-card" id="product-08">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=600&q=80" alt="Chair">
+            </div>
+            <div class="product-name">Modern ergonomic chair for home and office</div>
+            <div class="price"><sup>₹</sup>4,799</div>
+            <div class="mrp">M.R.P.: <del>₹5,999</del></div>
+            <button class="add-button">Add to cart</button>
+          </article>
+
+          <article class="product-card" id="product-09">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80" alt="Laptop">
+            </div>
+            <div class="product-name">Slim laptop for study, office and everyday work</div>
+            <div class="price"><sup>₹</sup>48,999</div>
+            <div class="mrp">M.R.P.: <del>₹57,999</del></div>
+            <button class="add-button">Add to cart</button>
+          </article>
+
+          <article class="product-card" id="product-10">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=600&q=80" alt="Perfume">
+            </div>
+            <div class="product-name">Fresh fragrance perfume for daily wear</div>
+            <div class="price"><sup>₹</sup>849</div>
+            <div class="mrp">M.R.P.: <del>₹1,249</del></div>
+            <button class="add-button">Add to cart</button>
+          </article>
+
+          <article class="product-card" id="product-11">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80" alt="Phone case">
+            </div>
+            <div class="product-name">Protective phone case with slim shockproof design</div>
+            <div class="price"><sup>₹</sup>399</div>
+            <div class="mrp">M.R.P.: <del>₹799</del></div>
+            <button class="add-button">Add to cart</button>
+          </article>
+
+          <article class="product-card" id="product-12">
+            <div class="product-image">
+              <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80" alt="Handbag">
+            </div>
+            <div class="product-name">Everyday shoulder handbag with multiple pockets</div>
+            <div class="price"><sup>₹</sup>1,849</div>
+            <div class="mrp">M.R.P.: <del>₹2,499</del></div>
+            <button class="add-button">Add to cart</button>
+          </article>
+
         </div>
       </section>
 
-      <section id="popular-products" class="section best-sellers">
-        <div class="section-heading"><h1>Popular Products</h1><span>Popular picks</span></div>
-        <p style="color:#565959;font-size:14px;">Discover everyday essentials, electronics, fashion and home products in our collection.</p>
+      <section class="section best-sellers">
+        <div class="section-heading">
+          <h1>Best sellers in this category</h1>
+          <span>Popular picks</span>
+        </div>
+
+        <p style="color:#52637a;font-size:14px">
+          Explore popular electronics, accessories, fashion and home products.
+        </p>
       </section>
+
     </main>
 
-    <!-- Keep this empty initially. When you manually add .cart-item elements,
-         change display:none in .cart-container to display:block. -->
-    <aside id="cart" class="cart-container">
+    <!-- CART -->
+
+    <aside class="cart-container" id="cart-container">
       <h2>Your Cart</h2>
-      <div id="cart-items" class="cart-items">
-        <!-- Example structure to duplicate manually:
-        <div class="cart-item">
-          <img src="PRODUCT_IMAGE_URL" alt="Product name">
-          <div class="cart-item-details">Product name<strong>₹1,499</strong></div>
-        </div>
-        -->
-      </div>
-      <div id="cart-total" class="cart-total">Subtotal: ₹0.00</div>
+      <div class="cart-items" id="cart-items"></div>
+      <div class="cart-total">Subtotal: ₹0.00</div>
     </aside>
+
   </div>
+
   <script>
-    let product1 = document.getElementById("product1");
-let product2 = document.getElementById("product2");
-let product3 = document.getElementById("product3");
-let product4 = document.getElementById("product4");
-let product5 = document.getElementById("product5");
-let product6 = document.getElementById("product6");
-let product7 = document.getElementById("product7");
-let product8 = document.getElementById("product8");
-let product9 = document.getElementById("product9");
-let product10 = document.getElementById("product10");
-let product11 = document.getElementById("product11");
-let product12 = document.getElementById("product12");
-let product13 = document.getElementById("product13");
-let product14 = document.getElementById("product14");
-let product15 = document.getElementById("product15");
-let product16 = document.getElementById("product16");
-let product17 = document.getElementById("product17");
-let product18 = document.getElementById("product18");
-let product19 = document.getElementById("product19");
-let product20 = document.getElementById("product20");
-let product21 = document.getElementById("product21");
-let product22 = document.getElementById("product22");
-let product23 = document.getElementById("product23");
-let product24 = document.getElementById("product24");
-let product25 = document.getElementById("product25");
-let product26 = document.getElementById("product26");
-let product27 = document.getElementById("product27");
-let product28 = document.getElementById("product28");
-let product29 = document.getElementById("product29");
-let product30 = document.getElementById("product30");
-let product31 = document.getElementById("product31");
-let product32 = document.getElementById("product32");
-let product33 = document.getElementById("product33");
-      
-    })
+    // Open and close sidebar
+
+    let hamburger = document.querySelector(".hamburger");
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarOverlay = document.querySelector(".sidebar-overlay");
+    let sidebarClose = document.querySelector(".sidebar-close");
+
+    function openSidebar() {
+      sidebar.classList.add("active");
+      sidebarOverlay.classList.add("active");
+      sidebarClose.classList.add("active");
+    }
+
+    function closeSidebar() {
+      sidebar.classList.remove("active");
+      sidebarOverlay.classList.remove("active");
+      sidebarClose.classList.remove("active");
+    }
+
+    hamburger.addEventListener("click", openSidebar);
+    sidebarClose.addEventListener("click", closeSidebar);
+    sidebarOverlay.addEventListener("click", closeSidebar);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeSidebar();
+      }
+    });
+
+    // Get all products
+
+    let product01 = document.getElementById("product-01");
+    let product02 = document.getElementById("product-02");
+    let product03 = document.getElementById("product-03");
+    let product04 = document.getElementById("product-04");
+    let product05 = document.getElementById("product-05");
+    let product06 = document.getElementById("product-06");
+    let product07 = document.getElementById("product-07");
+    let product08 = document.getElementById("product-08");
+    let product09 = document.getElementById("product-09");
+    let product10 = document.getElementById("product-10");
+    let product11 = document.getElementById("product-11");
+    let product12 = document.getElementById("product-12");
+
+    // Get product names
+
+    let productName01 = product01.querySelector(".product-name").innerText;
+    let productName02 = product02.querySelector(".product-name").innerText;
+    let productName03 = product03.querySelector(".product-name").innerText;
+    let productName04 = product04.querySelector(".product-name").innerText;
+    let productName05 = product05.querySelector(".product-name").innerText;
+    let productName06 = product06.querySelector(".product-name").innerText;
+    let productName07 = product07.querySelector(".product-name").innerText;
+    let productName08 = product08.querySelector(".product-name").innerText;
+    let productName09 = product09.querySelector(".product-name").innerText;
+    let productName10 = product10.querySelector(".product-name").innerText;
+    let productName11 = product11.querySelector(".product-name").innerText;
+    let productName12 = product12.querySelector(".product-name").innerText;
+
+    // Search products
+
+    let inp = document.getElementById("inp");
+
+    inp.addEventListener("keyup", (e) => {
+      let value = e.target.value.toLowerCase();
+
+      product01.style.display = productName01.toLowerCase().includes(value) ? "flex" : "none";
+      product02.style.display = productName02.toLowerCase().includes(value) ? "flex" : "none";
+      product03.style.display = productName03.toLowerCase().includes(value) ? "flex" : "none";
+      product04.style.display = productName04.toLowerCase().includes(value) ? "flex" : "none";
+      product05.style.display = productName05.toLowerCase().includes(value) ? "flex" : "none";
+      product06.style.display = productName06.toLowerCase().includes(value) ? "flex" : "none";
+      product07.style.display = productName07.toLowerCase().includes(value) ? "flex" : "none";
+      product08.style.display = productName08.toLowerCase().includes(value) ? "flex" : "none";
+      product09.style.display = productName09.toLowerCase().includes(value) ? "flex" : "none";
+      product10.style.display = productName10.toLowerCase().includes(value) ? "flex" : "none";
+      product11.style.display = productName11.toLowerCase().includes(value) ? "flex" : "none";
+      product12.style.display = productName12.toLowerCase().includes(value) ? "flex" : "none";
+    });
+
+    // Add to cart
+
+    let buttons = document.querySelectorAll(".add-button");
+    let cart = document.getElementById("cart-container");
+    let cartItems = document.getElementById("cart-items");
+    let cartTotal = document.querySelector(".cart-total");
+    let cartCount = document.getElementById("cart-count");
+    let cartLink = document.getElementById("cart-link");
+
+    let total = 0;
+    let count = 0;
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        let product = button.closest(".product-card");
+        let name = product.querySelector(".product-name").innerText;
+
+        let price = Number(
+          product.querySelector(".price").innerText.replace(/[^\d]/g, "")
+        );
+
+        let img = product.querySelector("img").src;
+
+        let item = document.createElement("div");
+        item.className = "cart-item";
+
+        let image = document.createElement("img");
+        image.src = img;
+        image.alt = name;
+
+        let details = document.createElement("div");
+        details.className = "cart-item-details";
+
+        let productTitle = document.createElement("p");
+        productTitle.innerText = name;
+
+        let productPrice = document.createElement("strong");
+        productPrice.innerText = "₹" + price.toLocaleString("en-IN");
+
+        details.appendChild(productTitle);
+        details.appendChild(productPrice);
+
+        item.appendChild(image);
+        item.appendChild(details);
+
+        cartItems.appendChild(item);
+
+        total = total + price;
+        count = count + 1;
+
+        cartTotal.innerText =
+          "Subtotal: ₹" + total.toLocaleString("en-IN");
+
+        cartCount.innerText = count;
+        cart.style.display = "block";
+
+        button.innerText = "Added ✓";
+
+        setTimeout(() => {
+          button.innerText = "Add to cart";
+        }, 1000);
+      });
+    });
+
+    // Open cart
+
+    cartLink.addEventListener("click", () => {
+      cart.style.display = "block";
+
+      cart.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
+
+    // Open sidebar from navigation
+
+    let navAll = document.querySelector(".nav-all");
+    navAll.addEventListener("click", openSidebar);
   </script>
+
 </body>
 </html>

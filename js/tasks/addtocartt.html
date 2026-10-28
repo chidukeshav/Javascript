@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>  
+    <div class="dis"></div>
+    <p></p>
+    <script>
+        let p = document.querySelector("p")
+        let count = 0;
+
+        if (count == 0) {
+            p.innerText = "Cart is emptyy"
+        }
+
+        let display = document.querySelector(".dis")
+        let product = [
+            {
+                id: 1, pdtname: "Mobile"
+            },
+            {
+                id: 2, pdtname: "Car"
+            },
+            {
+                id: 3, pdtname: "Bike"
+            }
+        ]
+        function Addtocart(elementid) {
+            count++;
+            p.innerText = count
+
+        }
+        function deleteitem(elementid) {
+            if (count < 1) {
+                p.innerText = "Cart is emptyy"
+                return
+            }
+            count--;
+            p.innerText = count
+
+        }
+
+
+
+        display.innerHTML = product.map((element) => {
+
+            return `
+            <div class="item">
+            <p>${element.pdtname}</p>
+              <button onclick="Addtocart('${element.id}')">Addtocart</button>
+      <button onclick="deleteitem('${element.id}')">delete</button>
+            </div>
+            `
+
+        }).join("")
+
+
+    </script>
+</body>
+
+</html>

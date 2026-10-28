@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Cart</title>
+</head>
+<body>
+
+    <h2>Products</h2>
+    <div id="products"></div>
+
+    <h2>My Cart</h2>
+    <div id="cart"></div>
+
+    <script>
+        // Array of objects
+        const products = [
+            { id: 1, content: "Laptop" },
+            { id: 2, content: "Mobile" },
+            { id: 3, content: "Headphones" },
+            { id: 4, content: "Keyboard" }
+        ];
+
+        // Empty cart array
+        let cart = [];
+
+        // Display products
+        function displayProducts() {
+            const productDiv = document.getElementById("products");
+            productDiv.innerHTML = "";
+
+            products.forEach(function(product) {
+                productDiv.innerHTML += `
+                    <p>
+                        ${product.content}
+                        <button onclick="addToCart(${product.id})">
+                            Add to Cart
+                        </button>
+                    </p>
+                `;
+            });
+        }
+
+        // Add item to cart
+        function addToCart(id) {
+            const item = products.find(function(product) {
+                return product.id === id;
+            });
+
+            if (item && !cart.some(function(product) {
+                return product.id === id;
+            })) {
+                cart.push(item);
+            }
+
+            displayCart();
+        }
+
+        // Remove item from cart
+        function removeFromCart(id) {
+            cart = cart.filter(function(item) {
+                return item.id !== id;
+            });
+
+            displayCart();
+        }
+
+        // Display cart items
+        function displayCart() {
+            const cartDiv = document.getElementById("cart");
+            cartDiv.innerHTML = "";
+
+            if (cart.length === 0) {
+                cartDiv.innerHTML = "<p>Cart is empty</p>";
+                return;
+            }
+
+            cart.forEach(function(item) {
+                cartDiv.innerHTML += `
+                    <p>
+                        ${item.content}
+                        <button onclick="removeFromCart(${item.id})">
+                            Remove
+                        </button>
+                    </p>
+                `;
+            });
+        }
+
+        // Initial display
+        displayProducts();
+        displayCart();
+    </script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Cart</title>
+</head>
+<body>
+
+    <h2>Products</h2>
+    <div id="products"></div>
+
+    <h2>My Cart</h2>
+    <div id="cart"></div>
+
+    <script>
+        // Array of objects
+        const products = [
+            { id: 1, content: "Laptop" },
+            { id: 2, content: "Mobile" },
+            { id: 3, content: "Headphones" },
+            { id: 4, content: "Keyboard" }
+        ];
+
+        // Empty cart array
+        let cart = [];
+
+        // Display products
+        function displayProducts() {
+            const productDiv = document.getElementById("products");
+            productDiv.innerHTML = "";
+
+            products.forEach(function(product) {
+                productDiv.innerHTML += `
+                    <p>
+                        ${product.content}
+                        <button onclick="addToCart(${product.id})">
+                            Add to Cart
+                        </button>
+                    </p>
+                `;
+            });
+        }
+
+        // Add item to cart
+        function addToCart(id) {
+            const item = products.find(function(product) {
+                return product.id === id;
+            });
+
+            if (item && !cart.some(function(product) {
+                return product.id === id;
+            })) {
+                cart.push(item);
+            }
+
+            displayCart();
+        }
+
+        // Remove item from cart
+        function removeFromCart(id) {
+            cart = cart.filter(function(item) {
+                return item.id !== id;
+            });
+
+            displayCart();
+        }
+
+        // Display cart items
+        function displayCart() {
+            const cartDiv = document.getElementById("cart");
+            cartDiv.innerHTML = "";
+
+            if (cart.length === 0) {
+                cartDiv.innerHTML = "<p>Cart is empty</p>";
+                return;
+            }
+
+            cart.forEach(function(item) {
+                cartDiv.innerHTML += `
+                    <p>
+                        ${item.content}
+                        <button onclick="removeFromCart(${item.id})">
+                            Remove
+                        </button>
+                    </p>
+                `;
+            });
+        }
+
+        // Initial display
+        displayProducts();
+        displayCart();
+    </script>
+
+</body>
+</html>

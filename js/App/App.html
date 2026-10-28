@@ -1,11 +1,1001 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopZone | Products</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --navy: #172536;
+        --navy-2: #24364b;
+        --yellow: #ffd21f;
+        --page: #eaeded;
+        --text: #202124;
+        --muted: #565959;
+        --border: #d5d9d9;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--page);
+        color: var(--text);
+      }
+
+      /* HEADER */
+
+      .topbar {
+        min-height: 70px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 12px 22px;
+        background: var(--navy);
+        color: white;
+      }
+
+      .hamburger {
+        width: 38px;
+        height: 38px;
+        border: 1px solid #738092;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        flex-shrink: 0;
+      }
+
+      .logo {
+        font-size: 25px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .logo span {
+        color: var(--yellow);
+      }
+
+      .search {
+        display: flex;
+        flex: 1;
+        min-width: 120px;
+        height: 42px;
+        border-radius: 5px;
+        overflow: hidden;
+        background: white;
+      }
+
+      .search-label {
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        background: #e7e9ec;
+        color: #30343b;
+        border-right: 1px solid #c9cdd1;
+        font-size: 13px;
+      }
+
+      .search input {
+        min-width: 0;
+        width: 100%;
+        border: 0;
+        outline: 0;
+        padding: 0 13px;
+        font-size: 15px;
+      }
+
+      .search-icon {
+        display: grid;
+        place-items: center;
+        width: 52px;
+        flex-shrink: 0;
+        background: #ffbd62;
+        color: #172536;
+        font-size: 23px;
+      }
+
+      .header-link {
+        font-size: 13px;
+        line-height: 1.35;
+        white-space: nowrap;
+      }
+
+      /* NAVIGATION */
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 23px;
+        min-height: 40px;
+        padding: 0 24px;
+        background: var(--navy-2);
+        color: white;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 14px;
+      }
+
+      .nav strong {
+        font-size: 15px;
+      }
+
+      /* PAGE STRUCTURE */
+
+      .page-layout {
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+        max-width: 1600px;
+        margin: 18px auto;
+        padding: 0 18px;
+      }
+
+      .main-content {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .section {
+        background: white;
+        padding: 20px;
+        margin-bottom: 18px;
+        border-radius: 2px;
+      }
+
+      .section-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .section-heading h1 {
+        font-size: 21px;
+        font-weight: 500;
+      }
+
+      .section-heading span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      /* PRODUCT GRID */
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .product-card {
+        min-width: 0;
+        padding: 10px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        background: white;
+      }
+
+      .product-card:hover {
+        border-color: var(--border);
+      }
+
+      .product-image {
+        height: 165px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 12px;
+        background: white;
+        overflow: hidden;
+      }
+
+      .product-image img {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      .product-name {
+        min-height: 42px;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #17618a;
+        margin-bottom: 6px;
+      }
+
+      .rating {
+        color: #e87900;
+        font-size: 15px;
+        margin-bottom: 7px;
+      }
+
+      .rating small {
+        color: #17618a;
+        font-size: 12px;
+      }
+
+      .deal {
+        align-self: flex-start;
+        background: #cc0c39;
+        color: white;
+        font-size: 11px;
+        padding: 5px 7px;
+        margin-bottom: 8px;
+        border-radius: 2px;
+      }
+
+      .price {
+        font-size: 21px;
+        margin-bottom: 3px;
+      }
+
+      .price sup {
+        font-size: 12px;
+        vertical-align: top;
+      }
+
+      .mrp {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 13px;
+      }
+
+      .mrp del {
+        margin-left: 4px;
+      }
+
+      .add-button {
+        margin-top: auto;
+        align-self: flex-start;
+        border: 0;
+        border-radius: 22px;
+        padding: 9px 17px;
+        background: var(--yellow);
+        color: #202124;
+        font-size: 13px;
+        cursor: default;
+      }
+
+      /* EMPTY CART CONTAINER */
+
+      .cart-container {
+        display: none;
+        width: 250px;
+        flex: 0 0 250px;
+        position: sticky;
+        top: 16px;
+        background: white;
+        border: 1px solid var(--border);
+        padding: 16px;
+        border-radius: 3px;
+      }
+
+      .cart-container h2 {
+        font-size: 18px;
+        margin-bottom: 14px;
+      }
+
+      .cart-item {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .cart-item img {
+        width: 58px;
+        height: 58px;
+        object-fit: contain;
+      }
+
+      .cart-item-details {
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .cart-item-details strong {
+        display: block;
+        margin-top: 4px;
+      }
+
+      .cart-total {
+        font-weight: bold;
+        margin-top: 16px;
+      }
+
+      .best-sellers {
+        margin-top: 18px;
+      }
+
+
+      /* AMAZON-STYLE LEFT SIDEBAR */
+      .hamburger {
+        cursor: pointer;
+      }
+
+      .sidebar-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 2000;
+      }
+
+      .sidebar {
+        position: fixed;
+        top: 0;
+        left: -360px;
+        width: 350px;
+        max-width: 85vw;
+        height: 100vh;
+        background: #fff;
+        color: #111;
+        z-index: 2001;
+        overflow-y: auto;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.25);
+      }
+
+      .sidebar.active {
+        left: 0;
+      }
+
+      .sidebar-overlay.active {
+        display: block;
+      }
+
+      .sidebar-header {
+        min-height: 55px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 20px;
+        background: var(--navy);
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .sidebar-header .user-icon {
+        font-size: 24px;
+      }
+
+      .sidebar-close {
+        position: fixed;
+        top: 10px;
+        left: min(360px, 86vw);
+        z-index: 2002;
+        display: none;
+        width: 34px;
+        height: 34px;
+        border: 1px solid white;
+        border-radius: 4px;
+        background: transparent;
+        color: white;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .sidebar-close.active {
+        display: block;
+      }
+
+      .sidebar-section {
+        padding: 18px 20px;
+        border-bottom: 1px solid #d5d9d9;
+      }
+
+      .sidebar-section h3 {
+        margin-bottom: 12px;
+        font-size: 18px;
+      }
+
+      .sidebar-section p {
+        padding: 10px 0;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .sidebar-section p:hover {
+        background: #eaeded;
+      }
+
+      /* RESPONSIVE DESIGN */
+
+      @media (max-width: 1200px) {
+        .product-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .header-link.optional {
+          display: none;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .product-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .page-layout {
+          padding: 0 10px;
+        }
+
+        .topbar {
+          gap: 12px;
+          padding: 10px 12px;
+        }
+
+        .nav {
+          gap: 15px;
+        }
+
+        .cart-container {
+          width: 220px;
+          flex-basis: 220px;
+        }
+      }
+
+      @media (max-width: 650px) {
+        .topbar {
+          flex-wrap: wrap;
+        }
+
+        .search {
+          order: 3;
+          flex-basis: 100%;
+        }
+
+        .header-link {
+          display: none;
+        }
+
+        .nav {
+          overflow-x: auto;
+          padding: 0 12px;
+        }
+
+        .page-layout {
+          display: block;
+          margin-top: 10px;
+        }
+
+        .cart-container {
+          position: static;
+          width: 100%;
+          margin-top: 16px;
+        }
+
+        .product-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 8px;
+        }
+
+        .section {
+          padding: 12px;
+        }
+
+        .product-image {
+          height: 135px;
+        }
+
+        .section-heading h1 {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="topbar">
+      <div class="hamburger" aria-label="Menu">&#9776;</div>
+
+      <div class="logo">shop<span>zone</span></div>
+
+      <div class="search">
+        <div class="search-label">All &#9662;</div>
+        <input id="inp" type="text" placeholder="Search ShopZone" />
+        <div class="search-icon">&#9906;</div>
+      </div>
+
+      <div class="header-link optional">
+        Delivering to Bengaluru<br />
+        <strong>Update location</strong>
+      </div>
+
+      <div class="header-link">
+        Hello, sign in<br />
+        <strong>Account &amp; Lists</strong>
+      </div>
+
+      <div class="header-link optional">
+        Returns<br />
+        <strong>&amp; Orders</strong>
+      </div>
+
+      <div class="header-link" id="cart-link">
+        <strong>🛒 Cart (<span id="cart-count">0</span>)</strong>
+      </div>
+    </header>
+
+
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar-overlay"></div>
+    <button class="sidebar-close" aria-label="Close menu">&times;</button>
+    <aside class="sidebar" aria-label="Main menu">
+      <div class="sidebar-header">
+        <span class="user-icon">&#9787;</span>
+        <span>Hello, sign in</span>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Trending</h3>
+        <p>Bestsellers</p>
+        <p>New Releases</p>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Digital Content and Devices</h3>
+        <p>Echo &amp; Alexa <span style="float:right">&#8250;</span></p>
+        <p>Fire TV <span style="float:right">&#8250;</span></p>
+        <p>Kindle E-Readers &amp; eBooks <span style="float:right">&#8250;</span></p>
+        <p>Audible Audiobooks <span style="float:right">&#8250;</span></p>
+        <p>ShopZone Prime Video <span style="float:right">&#8250;</span></p>
+        <p>ShopZone Music <span style="float:right">&#8250;</span></p>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Shop by Category</h3>
+        <p>Mobiles, Computers <span style="float:right">&#8250;</span></p>
+        <p>TV, Appliances, Electronics <span style="float:right">&#8250;</span></p>
+        <p>Men's Fashion <span style="float:right">&#8250;</span></p>
+        <p>Women's Fashion <span style="float:right">&#8250;</span></p>
+        <p>Home, Kitchen, Pets <span style="float:right">&#8250;</span></p>
+        <p>Books <span style="float:right">&#8250;</span></p>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>Help &amp; Settings</h3>
+        <p>Your Account</p>
+        <p>Customer Service</p>
+        <p>Sign in</p>
+      </div>
+    </aside>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+      <strong>&#9776; All</strong>
+      <span>Today's Deals</span>
+      <span>Customer Service</span>
+      <span>Mobiles</span>
+      <span>Electronics</span>
+      <span>Home &amp; Kitchen</span>
+      <span>Fashion</span>
+      <span>Computers</span>
+      <span>Best Sellers</span>
+    </nav>
+
+    <!-- MAIN PAGE -->
+    <div class="page-layout">
+      <main class="main-content">
+        <section class="section">
+          <div class="section-heading">
+            <h1>Bargain recommendations</h1>
+            <span>Page 1 of 1</span>
+          </div>
+
+          <div class="product-grid">
+            <!-- PRODUCT 01 -->
+            <article class="product-card" id="product-01">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"
+                  alt="Smartphone"
+                />
+              </div>
+              <div class="product-name">
+                Smartphone with HD display, 128 GB storage
+              </div>
+              <div class="rating">★★★★☆ <small>(2,431)</small></div>
+              <div class="deal">30% off</div>
+              <div class="price"><sup>₹</sup>14,999</div>
+              <div class="mrp">M.R.P.: <del>₹21,499</del></div>
+              <button class="add-button">Add to cart</button>
+            </article>
+
+            <!-- PRODUCT 02 -->
+            <article class="product-card" id="product-02">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"
+                  alt="Headphones"
+                />
+              </div>
+              <div class="product-name">
+                Wireless over-ear headphones with deep bass
+              </div>
+              <div class="rating">★★★★★ <small>(8,120)</small></div>
+              <div class="deal">42% off</div>
+              <div class="price"><sup>₹</sup>2,899</div>
+              <div class="mrp">M.R.P.: <del>₹4,999</del></div>
+              <button class="add-button">Add to cart</button>
+            </article>
+
+            <!-- PRODUCT 03 -->
+            <article class="product-card" id="product-03">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+                  alt="Watch"
+                />
+              </div>
+              <div class="product-name">
+                Classic analog wrist watch for everyday use
+              </div>
+              <div class="rating">★★★★☆ <small>(1,825)</small></div>
+              <div class="deal">25% off</div>
+              <div class="price"><sup>₹</sup>1,499</div>
+              <div class="mrp">M.R.P.: <del>₹1,999</del></div>
+              <button class="add-button">Add to cart</button>
+            </article>
+
+            <!-- PRODUCT 04 -->
+            <article class="product-card" id="product-04">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
+                  alt="Running shoes"
+                />
+              </div>
+              <div class="product-name">
+                Lightweight running shoes for daily training
+              </div>
+              <div class="rating">★★★★☆ <small>(4,690)</small></div>
+              <div class="deal">35% off</div>
+              <div class="price"><sup>₹</sup>2,599</div>
+              <div class="mrp">M.R.P.: <del>₹3,999</del></div>
+              <button class="add-button">Add to cart</button>
+            </article>
+
+            <!-- PRODUCT 05 -->
+            <article class="product-card" id="product-05">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=600&q=80"
+                  alt="Camera"
+                />
+              </div>
+              <div class="product-name">
+                Compact digital camera for travel and memories
+              </div>
+              <div class="rating">★★★★☆ <small>(982)</small></div>
+              <div class="deal">18% off</div>
+              <div class="price"><sup>₹</sup>8,199</div>
+              <div class="mrp">M.R.P.: <del>₹9,999</del></div>
+              <button class="add-button">Add to cart</button>
+            </article>
+
+            <!-- PRODUCT 06 -->
+            <article class="product-card" id="product-06">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=600&q=80"
+                  alt="Headset"
+                />
+              </div>
+              <div class="product-name">
+                Comfort-fit wireless headset with microphone
+              </div>
+              <div class="rating">★★★★☆ <small>(1,540)</small></div>
+              <div class="deal">28% off</div>
+              <div class="price"><sup>₹</sup>1,799</div>
+              <div class="mrp">M.R.P.: <del>₹2,499</del></div>
+              <button class="add-button">Add to cart</button>
+            </article>
+
+            <!-- PRODUCT 07 -->
+            <article class="product-card" id="product-07">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&q=80"
+                  alt="Smartwatch"
+                />
+              </div>
+              <div class="product-name">
+                Smart watch with fitness and activity tracking
+              </div>
+              <div class="rating">★★★★☆ <small>(6,211)</small></div>
+              <div class="deal">40% off</div>
+              <div class="price"><sup>₹</sup>2,999</div>
+              <div class="mrp">M.R.P.: <del>₹4,999</del></div>
+              <button class="add-button">Add to cart</button>
+            </article>
+
+            <!-- PRODUCT 08 -->
+            <article class="product-card" id="product-08">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=600&q=80"
+                  alt="Chair"
+                />
+              </div>
+              <div class="product-name">
+                Modern ergonomic chair for home and office
+              </div>
+              <div class="rating">★★★★☆ <small>(735)</small></div>
+              <div class="deal">20% off</div>
+              <div class="price"><sup>₹</sup>4,799</div>
+              <div class="mrp">M.R.P.: <del>₹5,999</del></div>
+              <button class="add-button">Add to cart</button>
+            </article>
+
+            <!-- PRODUCT 09 -->
+            <article class="product-card" id="product-09">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80"
+                  alt="Laptop"
+                />
+              </div>
+              <div class="product-name">
+                Slim laptop for study, office and everyday work
+              </div>
+              <div class="rating">★★★★☆ <small>(1,174)</small></div>
+              <div class="deal">15% off</div>
+              <div class="price"><sup>₹</sup>48,999</div>
+              <div class="mrp">M.R.P.: <del>₹57,999</del></div>
+              <button class="add-button">Add to cart</button>
+            </article>
+
+            <!-- PRODUCT 10 -->
+            <article class="product-card" id="product-10">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=600&q=80"
+                  alt="Perfume"
+                />
+              </div>
+              <div class="product-name">
+                Fresh fragrance perfume for daily wear
+              </div>
+              <div class="rating">★★★★☆ <small>(3,407)</small></div>
+              <div class="deal">32% off</div>
+              <div class="price"><sup>₹</sup>849</div>
+              <div class="mrp">M.R.P.: <del>₹1,249</del></div>
+              <button class="add-button">Add to cart</button>
+            </article>
+
+            <!-- PRODUCT 11 -->
+            <article class="product-card" id="product-11">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"
+                  alt="Protective phone case"
+                />
+              </div>
+              <div class="product-name">
+                Protective phone case with slim shockproof design
+              </div>
+              <div class="rating">★★★★☆ <small>(2,052)</small></div>
+              <div class="deal">50% off</div>
+              <div class="price"><sup>₹</sup>399</div>
+              <div class="mrp">M.R.P.: <del>₹799</del></div>
+              <button class="add-button">Add to cart</button>
+            </article>
+
+            <!-- PRODUCT 12 -->
+            <article class="product-card" id="product-12">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80"
+                  alt="Handbag"
+                />
+              </div>
+              <div class="product-name">
+                Everyday shoulder handbag with multiple pockets
+              </div>
+              <div class="rating">★★★★☆ <small>(1,206)</small></div>
+              <div class="deal">26% off</div>
+              <div class="price"><sup>₹</sup>1,849</div>
+              <div class="mrp">M.R.P.: <del>₹2,499</del></div>
+              <button class="add-button">Add to cart</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="section best-sellers">
+          <div class="section-heading">
+            <h1>Best sellers in this category</h1>
+            <span>Popular picks</span>
+          </div>
+
+          <p style="color: #565959; font-size: 14px">
+            Explore popular electronics, accessories, fashion and home products.
+          </p>
+        </section>
+      </main>
+
+      <!-- EMPTY CART: hidden initially -->
+      <aside class="cart-container" id="cart-container">
+        <h2>Your Cart</h2>
+
+        <div class="cart-items" id="cart-items">
+          <!-- Add cart item elements here manually if needed. -->
+        </div>
+
+        <div class="cart-total">Subtotal: ₹0.00</div>
+      </aside>
+    </div>
+
+    <script>
+
+      // Open and close the Amazon-style left sidebar
+      let hamburger = document.querySelector(".hamburger");
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarOverlay = document.querySelector(".sidebar-overlay");
+      let sidebarClose = document.querySelector(".sidebar-close");
+
+      function closeSidebar() {
+        sidebar.classList.remove("active");
+        sidebarOverlay.classList.remove("active");
+        sidebarClose.classList.remove("active");
+      }
+
+      hamburger.addEventListener("click", () => {
+        sidebar.classList.add("active");
+        sidebarOverlay.classList.add("active");
+        sidebarClose.classList.add("active");
+      });
+
+      sidebarClose.addEventListener("click", closeSidebar);
+      sidebarOverlay.addEventListener("click", closeSidebar);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeSidebar();
+      });
+
+      let product01 = document.getElementById("product-01");
+      let product02 = document.getElementById("product-02");
+      let product03 = document.getElementById("product-03");
+      let product04 = document.getElementById("product-04");
+      let product05 = document.getElementById("product-05");
+      let product06 = document.getElementById("product-06");
+      let product07 = document.getElementById("product-07");
+      let product08 = document.getElementById("product-08");
+      let product09 = document.getElementById("product-09");
+      let product10 = document.getElementById("product-10");
+      let product11 = document.getElementById("product-11");
+      let product12 = document.getElementById("product-12");
+
+
+      // Get all 12 product names
+
+      let productName01 = product01.querySelector(".product-name").innerText;
+      let productName02 = product02.querySelector(".product-name").innerText;
+      let productName03 = product03.querySelector(".product-name").innerText;
+      let productName04 = product04.querySelector(".product-name").innerText;
+      let productName05 = product05.querySelector(".product-name").innerText;
+      let productName06 = product06.querySelector(".product-name").innerText;
+      let productName07 = product07.querySelector(".product-name").innerText;
+      let productName08 = product08.querySelector(".product-name").innerText;
+      let productName09 = product09.querySelector(".product-name").innerText;
+      let productName10 = product10.querySelector(".product-name").innerText;
+      let productName11 = product11.querySelector(".product-name").innerText;
+      let productName12 = product12.querySelector(".product-name").innerText;
+
+
+      let inp = document.getElementById("inp");
+      inp.addEventListener("keyup", (e) => {
+        let value = e.target.value.toLowerCase();
+        product01.style.display = productName01.toLowerCase().includes(value)
+          ? "flex"
+          : "none";
+        product02.style.display = productName02.toLowerCase().includes(value)
+          ? "flex"
+          : "none";
+        product03.style.display = productName03.toLowerCase().includes(value)
+          ? "flex"
+          : "none";
+        product04.style.display = productName04.toLowerCase().includes(value)
+          ? "flex"
+          : "none";
+        product05.style.display = productName05.toLowerCase().includes(value)
+          ? "flex"
+          : "none";
+        product06.style.display = productName06.toLowerCase().includes(value)
+          ? "flex"
+          : "none";
+        product07.style.display = productName07.toLowerCase().includes(value)
+          ? "flex"
+          : "none";
+        product08.style.display = productName08.toLowerCase().includes(value)
+          ? "flex"
+          : "none";
+        product09.style.display = productName09.toLowerCase().includes(value)
+          ? "flex"
+          : "none";
+        product10.style.display = productName10.toLowerCase().includes(value)
+          ? "flex"
+          : "none";
+        product11.style.display = productName11.toLowerCase().includes(value)
+          ? "flex"
+          : "none";
+        product12.style.display = productName12.toLowerCase().includes(value)
+          ? "flex"
+          : "none";
+      });
+            // Add to cart
+      let buttons = document.querySelectorAll(".add-button");
+      let cart = document.getElementById("cart-container");
+      let cartItems = document.getElementById("cart-items");
+      let cartTotal = document.querySelector(".cart-total");
+      let cartCount = document.getElementById("cart-count");
+      let cartLink = document.getElementById("cart-link");
+
+      let total = 0;
+      let count = 0;
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          let product = button.closest(".product-card");
+          let name = product.querySelector(".product-name").innerText;
+          let price = Number(
+            product.querySelector(".price").innerText.replace(/[^\d]/g, "")
+          );
+          let img = product.querySelector("img").src;
+
+          let item = document.createElement("div");
+          item.className = "cart-item";
+
+          item.innerHTML = `
+            <img src="${img}" alt="${name}" width="60">
+            <div>
+              <p>${name}</p>
+              <strong>₹${price.toLocaleString("en-IN")}</strong>
+            </div>
+          `;
+
+          cartItems.appendChild(item);
+
+          total += price;
+          count++;
+
+          cartTotal.innerText =
+            "Subtotal: ₹" + total.toLocaleString("en-IN");
+
+          cartCount.innerText = count;
+          cart.style.display = "block";
+
+          button.innerText = "Added ✓";
+
+          setTimeout(() => {
+            button.innerText = "Add to cart";
+          }, 1000);
+        });
+      });
+
+      // Open cart
+      cartLink.addEventListener("click", () => {
+        cart.style.display = "block";
+        cart.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
+    </script>
+  </body>
 </html>
